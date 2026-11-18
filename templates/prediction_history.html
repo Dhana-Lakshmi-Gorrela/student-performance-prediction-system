@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Student Performance Prediction System</h1>
+        <p>Student Prediction History</p>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Previous Predictions</h2>
+
+            <div class="card">
+                <table border="1" cellpadding="12" width="100%">
+
+                    <tr>
+                        <th>Prediction ID</th>
+                        <th>Student ID</th>
+                        <th>Predicted Performance</th>
+                        <th>Risk Level</th>
+                    </tr>
+
+                    {% for prediction in predictions %}
+                    <tr>
+                        <td>{{ prediction.id }}</td>
+                        <td>{{ prediction.student_id }}</td>
+                        <td>{{ prediction.predicted_performance }}</td>
+                        <td>{{ prediction.risk_level }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+        <a href="/">Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

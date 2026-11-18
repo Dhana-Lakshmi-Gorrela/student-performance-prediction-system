@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Student Performance Prediction System</h1>
+        <p>Machine Learning Based Student Analysis</p>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Predict Student Performance</h2>
+
+            <div class="card">
+                <form method="POST">
+
+                    <label>Select Student</label>
+                    <select name="student_id" required>
+                        <option value="">Choose Student</option>
+
+                        {% for student in students %}
+                        <option value="{{ student.id }}">
+                            {{ student.name }} - {{ student.roll_number }}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <label>Attendance (%)</label>
+                    <input type="number" name="attendance"
+                           min="0" max="100" step="0.1" required>
+
+                    <label>Previous Marks</label>
+                    <input type="number" name="previous_marks"
+                           min="0" max="100" step="0.1" required>
+
+                    <label>Study Hours Per Week</label>
+                    <input type="number" name="study_hours"
+                           min="0" step="0.1" required>
+
+                    <label>Assignment Score (%)</label>
+                    <input type="number" name="assignment_score"
+                           min="0" max="100" step="0.1" required>
+
+                    <button type="submit">Predict Performance</button>
+
+                </form>
+            </div>
+        </div>
+
+        {% if result %}
+        <div class="section">
+            <div class="card">
+
+                <h2>Prediction Result</h2>
+
+                <h3>Predicted Performance: {{ result }}</h3>
+
+                <h3>Risk Level: {{ risk_level }}</h3>
+
+                <h2>Improvement Suggestions</h2>
+
+                <ul>
+                    {% for suggestion in suggestions %}
+                    <li>{{ suggestion }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+        {% endif %}
+
+        <a href="/">Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

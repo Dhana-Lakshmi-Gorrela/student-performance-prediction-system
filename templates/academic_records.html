@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academic Records</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Student Performance Prediction System</h1>
+        <p>Manage Student Academic Records</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Add Academic Records</h2>
+
+            <div class="card">
+                <form method="POST">
+
+                    <label>Select Student</label>
+                    <select name="student_id" required>
+                        <option value="">Choose Student</option>
+                        {% for student in students %}
+                        <option value="{{ student.id }}">
+                            {{ student.name }} - {{ student.roll_number }}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <label>Attendance (%)</label>
+                    <input type="number" name="attendance"
+                           min="0" max="100" step="0.1" required>
+
+                    <label>Previous Marks</label>
+                    <input type="number" name="previous_marks"
+                           min="0" max="100" step="0.1" required>
+
+                    <label>Study Hours Per Week</label>
+                    <input type="number" name="study_hours"
+                           min="0" step="0.1" required>
+
+                    <label>Assignment Score (%)</label>
+                    <input type="number" name="assignment_score"
+                           min="0" max="100" step="0.1" required>
+
+                    <button type="submit">Save Academic Record</button>
+
+                </form>
+            </div>
+        </div>
+
+        <a href="/">Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

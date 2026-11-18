@@ -1,0 +1,210 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fc;
+    color: #26344a;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(120deg, #142d4e, #2878c8);
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #dceaff;
+    font-size: 15px;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.container > h2,
+.section > h2 {
+    color: #173b68;
+    margin-bottom: 18px;
+}
+
+/* Sections */
+.section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 14px;
+    border: 1px solid #e5ebf3;
+    box-shadow: 0 4px 15px rgba(20, 45, 78, 0.05);
+}
+
+/* Dashboard Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #e5ebf3;
+    box-shadow: 0 4px 15px rgba(20, 45, 78, 0.06);
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 9px 24px rgba(20, 45, 78, 0.12);
+}
+
+.card h3 {
+    color: #52647b;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    color: #2878c8;
+    font-size: 32px;
+}
+
+/* Buttons and Links */
+.card a,
+form button {
+    display: inline-block;
+    background: #2878c8;
+    color: white;
+    text-decoration: none;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card a:hover,
+form button:hover {
+    background: #173b68;
+}
+
+a {
+    color: #2878c8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Forms */
+form {
+    max-width: 650px;
+}
+
+form label {
+    display: block;
+    margin: 15px 0 8px;
+    color: #173b68;
+    font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd5e2;
+    border-radius: 7px;
+    font-size: 15px;
+    background: white;
+    outline: none;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #2878c8;
+    box-shadow: 0 0 5px rgba(40, 120, 200, 0.2);
+}
+
+form button {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: #173b68;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid #e5ebf3;
+}
+
+tr:hover td {
+    background: #f1f6fd;
+}
+
+/* Back Link */
+.container > a {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 550px;
+    }
+}

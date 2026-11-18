@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Academic Records</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Student Performance Prediction System</h1>
+        <p>View Academic Performance Records</p>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Academic Records</h2>
+
+            <div class="card">
+                <table border="1" cellpadding="12" width="100%">
+                    <tr>
+                        <th>Record ID</th>
+                        <th>Student ID</th>
+                        <th>Attendance</th>
+                        <th>Previous Marks</th>
+                        <th>Study Hours</th>
+                        <th>Assignment Score</th>
+                    </tr>
+
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.id }}</td>
+                        <td>{{ record.student_id }}</td>
+                        <td>{{ record.attendance }}%</td>
+                        <td>{{ record.previous_marks }}</td>
+                        <td>{{ record.study_hours }}</td>
+                        <td>{{ record.assignment_score }}%</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <a href="/">Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

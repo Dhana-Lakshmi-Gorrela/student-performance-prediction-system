@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Student Performance Dashboard</h1>
+        <p>Welcome back, {{ student.name }}!</p>
+        <br>
+        <a href="{{ url_for('logout') }}"
+           style="color: white; background: #e74c3c; padding: 10px 22px; border-radius: 7px;">
+            Logout
+        </a>
+    </div>
+
+    <div class="container">
+
+        <h2>My Dashboard</h2>
+        <p>View your academic details and performance analysis.</p>
+
+        <!-- Student Profile -->
+        <div class="section">
+            <h2>My Profile</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Student Name</h3>
+                    <h2>{{ student.name }}</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Roll Number</h3>
+                    <h2>{{ student.roll_number }}</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Course</h3>
+                    <h2>{{ student.course }}</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Semester</h3>
+                    <h2>{{ student.semester }}</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Academic Records -->
+        <div class="section">
+            <h2>My Academic Records</h2>
+
+            {% if records %}
+
+            <table>
+                <tr>
+                    <th>Attendance</th>
+                    <th>Previous Marks</th>
+                    <th>Study Hours</th>
+                    <th>Assignment Score</th>
+                </tr>
+
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.attendance }}%</td>
+                    <td>{{ record.previous_marks }}</td>
+                    <td>{{ record.study_hours }}</td>
+                    <td>{{ record.assignment_score }}%</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+            {% else %}
+            <p>No academic records available.</p>
+            {% endif %}
+
+        </div>
+
+        <!-- Prediction Results -->
+        <div class="section">
+            <h2>My Prediction Results</h2>
+
+            {% if predictions %}
+
+            <div class="cards">
+
+                {% for prediction in predictions %}
+
+                <div class="card">
+                    <h3>Predicted Performance</h3>
+                    <h2>{{ prediction.predicted_performance }}</h2>
+
+                    <h3>Risk Level</h3>
+                    <h2>{{ prediction.risk_level }}</h2>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+            <p>No prediction results available.</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
